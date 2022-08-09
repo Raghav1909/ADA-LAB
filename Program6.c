@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 void swap(int *a, int *b)
 {
@@ -45,24 +47,29 @@ void heap_sort(int a[], int n)
     }
 }
 
-void print_heap(int a[], int n)
-{
-    int i;
-    for (i = 0; i < n; i++)
-        printf("%d ", a[i]);
-}
-
 void main()
 {
-    int a[5] = {4, 7, 5, 3, 6};
-    int n = 5, i;
-    printf("Elements before sort: ");
-    print_heap(a, n);
+    int n, k, *a;
+    clock_t st, et;
+    double ts;
+    srand(time(0));
+    printf("Enter the number of elements to be sorted: ");
+    scanf("%d", &n);
+    a = calloc(n, sizeof(int));
+    printf("\nThe Random Numbers are:\n");
+    for (k = 0; k < n; k++)
+    {
+        a[k] = rand() % 10000;
+        printf("%d\t", a[k]);
+    }
+
+    st = clock();
     build_heap(a, n);
-    printf("\nElements after build heap: ");
-    print_heap(a, n);
     heap_sort(a, n);
-    printf("\nElements after sort: ");
-    for (i = 0; i < n; i++)
-        printf("%d ", a[i]);
+    et = clock();
+    ts = (double)(et - st) / CLK_TCK;
+    printf("\n\nSorted Numbers are: \n");
+    for (k = 0; k < n; k++)
+        printf("%d\t", a[k]);
+    printf("\nTime taken = %lf", ts);
 }

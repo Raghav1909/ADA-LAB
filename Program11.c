@@ -46,8 +46,8 @@ void kruskal()
         if (min == 999)
             break;
 
-        i = parent[u];
-        j = parent[v];
+        i = find(u, parent);
+        j = find(v, parent);
 
         if (i != j)
         {
@@ -64,8 +64,32 @@ void kruskal()
     if (count == n - 1)
     {
         printf("\nMinimum spanning tree exists");
+        printf("\nCost of MST = %d", sum);
+        printf("\nSpanning tree is shown below:");
+
+        for (k = 0; k < n - 1; k++)
+            printf("\n%d->%d", t[k][0], t[k][1]);
     }
 
     else
         printf("\nMininum spanning tree does not exist");
+}
+
+void main()
+{
+    int i, j;
+    printf("Enter the no of vertices: ");
+    scanf("%d", &n);
+    printf("Enter the cost adjacency matrix:\n");
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            scanf("%d", &cost[i][j]);
+            if (cost[i][j] == 0)
+                cost[i][j] == 999;
+        }
+    }
+
+    kruskal();
 }

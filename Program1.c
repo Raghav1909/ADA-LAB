@@ -64,7 +64,7 @@ void main()
     mergesort(a, 0, n - 1);
     et = clock();
     ts = (double)(et - st) / CLK_TCK;
-    printf("\n\nSorted Numbers are : \n");
+    printf("\n\nSorted Numbers are: \n");
     for (k = 0; k < n; k++)
         printf("%d\t", a[k]);
     printf("\nTime taken = %lf", ts);
