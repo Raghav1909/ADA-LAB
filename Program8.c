@@ -10,14 +10,9 @@ void warshall()
     {
         for (i = 0; i < n; i++)
         {
-            for (j = 0; j < n; j++)
-            {
-                if (p[i][j] == 0)
-                {
-                    if (p[i][k] && p[k][j])
-                        p[i][j] == 1;
-                }
-            }
+            if (p[i][k] == 1)
+                for (j = 0; j < n; j++)
+                    p[i][j] = p[i][j] || p[k][j];
         }
     }
 }

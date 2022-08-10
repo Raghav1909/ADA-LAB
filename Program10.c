@@ -40,11 +40,16 @@ void prims(int n, int cost[10][10])
                 }
             }
         }
+
+        if (u == -1)
+            break;
+
         t[k][0] = u;
         t[k][1] = p[u];
         k++;
         sum += cost[u][p[u]];
         s[u] = 1;
+
         for (v = 0; v < n; v++)
         {
             if (s[v] == 0 && cost[u][v] < d[v])

@@ -25,7 +25,6 @@ void toposort_srm(int a[10][10], int n)
     while (top != -1)
     {
         u = s[top--];
-        printf("Debug = %d", u);
         T[k++] = u;
 
         for (v = 0; v < n; v++)
